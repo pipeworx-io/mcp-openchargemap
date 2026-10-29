@@ -1,0 +1,71 @@
+[
+  {
+    "name": "find_stations",
+    "description": "Find EV charging stations (electric vehicle chargers) near a place. Pass a `location` name (city/place, e.g. \"San Francisco\", \"Berlin\", \"Austin TX\") and it is geocoded automatically — OR pass explicit latitude+longitude. Returns nearby charging stations with operator, status, available connector types (CCS/CHAdeMO/Tesla connectors), charging speed (kW), and distance. Filter by connector type to find e.g. only CCS or Tesla chargers.",
+    "inputSchema": {
+      "type": "object",
+      "properties": {
+        "location": {
+          "type": "string",
+          "description": "Place/city name to search near, e.g. \"San Francisco\", \"Berlin\", \"Austin TX\". Geocoded automatically. Provide THIS or latitude+longitude."
+        },
+        "country": {
+          "type": "string",
+          "description": "Optional ISO country code (e.g. \"US\", \"FR\") to disambiguate an ambiguous `location` like \"Paris\" or \"Springfield\"."
+        },
+        "latitude": {
+          "type": "number",
+          "description": "Latitude of the search center, e.g. 37.7749. Optional if `location` is given."
+        },
+        "longitude": {
+          "type": "number",
+          "description": "Longitude of the search center, e.g. -122.4194. Optional if `location` is given."
+        },
+        "distance": {
+          "type": "number",
+          "description": "Search radius around the location (default 10)."
+        },
+        "distance_unit": {
+          "type": "string",
+          "enum": [
+            "KM",
+            "Miles"
+          ],
+          "description": "Unit for the search radius (default \"KM\")."
+        },
+        "max_results": {
+          "type": "number",
+          "description": "Maximum number of stations to return (default 20, max 100)."
+        },
+        "connection_type": {
+          "type": "string",
+          "description": "Optional connector type name to filter by, e.g. \"CCS\", \"CHAdeMO\", \"Tesla\". Case-insensitive substring match against each station's connector titles."
+        },
+        "_apiKey": {
+          "type": "string",
+          "description": "Optional — your own Open Charge Map API key for higher limits; works without one."
+        }
+      }
+    }
+  },
+  {
+    "name": "get_station",
+    "description": "Get full detail for a single EV charging station by its Open Charge Map POI ID. Returns the connector types (CCS/CHAdeMO/Tesla connectors), charging speed (kW), operator, status, plus user comments and last-verified date.",
+    "inputSchema": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "number",
+          "description": "Open Charge Map POI ID (e.g. from find_stations results)."
+        },
+        "_apiKey": {
+          "type": "string",
+          "description": "Optional — your own Open Charge Map API key for higher limits; works without one."
+        }
+      },
+      "required": [
+        "id"
+      ]
+    }
+  }
+]
