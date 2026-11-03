@@ -1,6 +1,6 @@
 {
   "name": "@pipeworx/mcp-openchargemap",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "Open Charge Map MCP — global EV charging station database (openchargemap.io).",
   "type": "module",
   "main": "lib/index.js",
@@ -27,7 +27,7 @@
     "mode": "gateway",
     "slug": "openchargemap",
     "gatewaySlug": "openchargemap",
-    "sourceHash": "v1-58b758c170c61f276863411bdd72da9d80d70f970f5489439fa5758b5cfb009c",
-    "sourceCommit": "b2c4383545bb35171d0ada2beb1c9c7168ea175e"
+    "sourceHash": "v1-909749da61491ffbacda289500722b1364470edd1258561100ffe94ec8e36fb3",
+    "sourceCommit": "bed7faa04e7276899b5e3870ef11c98625371f2b"
   }
 }
